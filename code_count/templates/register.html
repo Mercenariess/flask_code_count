@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap Modal Registration Form Template</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../static/assets/css/form-elements.css">
+        <link rel="stylesheet" href="../static/assets/css/style.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+
+        <![endif]-->
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="../static/assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../static/assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../static/assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../static/assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="../static/assets/ico/apple-touch-icon-57-precomposed.png">
+
+    </head>
+    <style>
+    body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    font-family: 'microsoft yahei';
+    background-image: url(../static/assets/images/login_bg.jpg);
+    color: black;
+    text-shadow: 0 0 black;
+    color: black;
+    background-color: white;
+}
+    </style>
+
+    <body>
+
+        <!-- Content -->
+        <div class="top-content" >
+
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                        	<a class="logo" href=""></a>
+                            <h1><strong>xxxx公司</strong> If you have any questions, please contact customer service</h1>
+                            <div class="description">
+                            	<p>
+	                            	Registration: if the employee is registered, you can register from the company if not.
+	                            	Download it on <a href="#"><strong>Code</strong></a>Author:春生
+
+
+                            	</p>
+                                <p><a href="#" style="color: red"><strong>{{ row }}</strong></a></p>
+                            </div>
+                            <div class="top-big-link">
+                            	<a class="btn btn-link-1 launch-modal" href="#" data-modal-id="modal-register">点击注册</a>
+                                <p></p>
+                                <p style="margin-top: 100px">Login link:<a href="/login">登陆链接</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- MODAL -->
+        <div class="modal fade" id="modal-register" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+        	<div class="modal-dialog">
+        		<div class="modal-content">
+
+        			<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal">
+        					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        				</button>
+        				<h3 class="modal-title" id="modal-register-label">现在就注册</h3>
+        				<p>填写以下表格以获得即时访问:</p>
+                        <p style="color: red">{{ row }}</p>
+        			</div>
+
+        			<div class="modal-body">
+
+	                    <form role="form" action="" method="post" class="registration-form">
+	                    	<div class="form-group">
+	                    		<label class="sr-only" for="form-first-name">账号</label>
+	                        	<input type="text" name="user" placeholder="账号..." class="form-first-name form-control" id="form-first-name">
+	                        </div>
+	                        <div class="form-group">
+	                        	<label class="sr-only" for="form-last-name">密码</label>
+	                        	<input type="text" name="pwd" placeholder="密码..." class="form-last-name form-control" id="form-last-name">
+	                        </div>
+	                        <div class="form-group">
+	                        	<label class="sr-only" for="form-email">昵称</label>
+	                        	<input type="text" name="name" placeholder="昵称..." class="form-email form-control" id="form-email">
+	                        </div>
+
+	                        <button type="submit" class="btn">注册</button>
+
+	                    </form>
+
+        			</div>
+
+        		</div>
+        	</div>
+        </div>
+
+
+        <!-- Javascript -->
+        <script src="../static/assets/js/jquery-1.11.1.min.js"></script>
+        <script src="../static/assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../static/assets/js/jquery.backstretch.min.js"></script>
+        <script src="../static/assets/js/scripts.js"></script>
+
+        <!--[if lt IE 10]>
+
+        <![endif]-->
+          <script src="assets/js/placeholder.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <script src="../static/jquery-3.2.1.min.js"></script>
+    <script src="../static/chart/highcharts.js"></script>
+
+   <div id="container" style="min-width:400px;height:400px"></div>
+
+{#    <h1>用户代码量提交记录</h1>#}
+{##}
+{#    <table border="1">#}
+{#        <thead>#}
+{#        <tr>#}
+{#            <th>ID</th>#}
+{#            <th>行数</th>#}
+{#            <th>日期</th>#}
+{#        </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for  i in  record_list %}#}
+{#            <tr>#}
+{#                <td>{{ i.id }}</td>#}
+{#                <td>{{ i.line }}</td>#}
+{#                <td>{{ i.ctime }}</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{##}
+{##}
+{#        </tbody>#}
+{#    </table>#}
+    <hr>
+
+<div class="table-responsive">
+  <table class="table">
+    <caption>响应式表格布局</caption>
+    <thead>
+         <tr>
+            <th>ID</th>
+            <th>行数</th>
+            <th>日期</th>
+        </tr>
+    </thead>
+    <tbody>
+          {% for  i in  record_list %}
+            <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.line }}</td>
+                <td>{{ i.ctime }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div>
+{% for foo in record_list %}
+    <div class="my mm hidden " >{{ foo.ctime }}</div>
+    <div class="my ll hidden" >{{ foo.line }}</div>
+{% endfor %}
+
+</div>
+<script>
+  $(document).ready(function () {
+        var data_time = new Array();
+        var data_line = new Array();
+        var line;
+        var time;
+        $('.my').each(function () {
+            if ($(this).hasClass('ll')) {
+                line =Number($(this).html());
+                data_line.push(line);
+            }
+            if ($(this).hasClass('mm')) {
+                time = $(this).html();
+                data_time.push(time);
+            }
+
+        }
+        );
+        console.log(data_line);
+        console.log(data_time);
+var chart = Highcharts.chart('container', {
+		chart: {
+				type: 'line'
+		},
+		title: {
+				text: '<{{ user }}>代码详细信息。'
+		},
+		subtitle: {
+				text: 'Data control author:春生'
+		},
+		xAxis: {
+				categories: data_time
+		},
+		yAxis: {
+				title: {
+						text: '代码 (行数)'
+				}
+		},
+		plotOptions: {
+				line: {
+						dataLabels: {
+								// 开启数据标签
+								enabled: true
+						},
+						// 关闭鼠标跟踪，对应的提示框、点击事件会失效
+						enableMouseTracking: false
+				}
+		},
+		series: [{
+				name: 'xxx公司',
+				data: data_line
+		}]
+});
+});
+</script>
+{% endblock %}

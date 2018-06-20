@@ -1,0 +1,125 @@
+{% extends "layout.html"%}
+
+{% block content %}
+
+      <script src="../static/jquery-3.2.1.min.js"></script>
+    <script src="../static/chart/highcharts.js"></script>
+  <div id="container" style="min-width:400px;height:400px"></div>
+{#    <h1>用户列表</h1>#}
+{#    <table border="1">#}
+{#        <thead>#}
+{#            <tr>#}
+{#                <th>ID</th>#}
+{#                <th>用户名</th>#}
+{#                <th>昵称</th>#}
+{#                <th>查看代码提交记录</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#            {% for row in data_list %}#}
+{#                <tr>#}
+{#                    <td>{{row.id}}</td>#}
+{#                    <td>{{row.user}}</td>#}
+{#                    <td>{{row.nickname}}</td>#}
+{#                    <td>#}
+{#                        <a href="/qwer/{{row.id}}">查看</a>#}
+{#                    </td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+    <hr>
+
+<div class="table-responsive">
+  <table class="table">
+    <caption>用户列表</caption>
+    <thead>
+            <tr>
+                <th>ID</th>
+                <th>用户名</th>
+                <th>昵称</th>
+                <th>查看代码提交记录</th>
+            </tr>
+    </thead>
+    <tbody>
+            {% for row in data_list %}
+                <tr>
+                    <td>{{row.id}}</td>
+                    <td>{{row.user}}</td>
+                    <td>{{row.nickname}}</td>
+                    <td>
+                        <a href="/qwer/{{row.id}}">查看</a>
+                    </td>
+
+                </tr>
+            {% endfor %}
+    </tbody>
+  </table>
+
+<div>
+    {% for foo in code_sum %}
+    <div class="nn hidden" data="{{ foo.num }}">{{ foo.nickname }}</div>
+{% endfor %}
+
+</div>
+</div>
+
+    <script>
+    $(document).ready(function () {
+        var data_list = new Array();
+        var user;
+        $('.nn').each(function () {
+            if ($(this).hasClass('nn')) {
+                var list = new Array();
+                user = $(this).html();
+                num = Number($(this).attr('data'));
+                list.push(user);
+                list.push(num);
+            }
+            data_list.push(list)
+        });
+var chart = Highcharts.chart('container', {
+
+		chart: {
+				type: 'column'
+		},
+		title: {
+				text: '全公司程序代码排行榜'
+		},
+		subtitle: {
+				text: '来源: <a href="">xx公司:作者春生</a>'
+		},
+		xAxis: {
+				type: 'category',
+				labels: {
+						rotation: -50  // 设置轴标签旋转角度
+				}
+		},
+		yAxis: {
+				min: 0,
+				title: {
+						text: 'CodeCount'
+				}
+		},
+		legend: {
+				enabled: false
+		},
+		tooltip: {
+				pointFormat: '代码行数: <b>{point.y:.1f} 行</b>'
+		},
+		series: [{
+				name: '总人口',
+				data: data_list,
+				dataLabels: {
+						enabled: true,
+						rotation: -90,
+						color: '#FFFFFF',
+						align: 'right',
+						format: '{point.y:.1f}', // :.1f 为保留 1 位小数
+						y: 10
+				}
+		}]
+});
+});
+    </script>
+{% endblock %}
